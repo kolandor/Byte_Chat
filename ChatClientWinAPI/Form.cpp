@@ -1,37 +1,9 @@
 #include "Form.h"
-#include <tchar.h>
 
 
 namespace mns
 {
-	LRESULT Form::WndProc(HWND hWnd, // дескриптор окошка
-		UINT uMsg, // сообщение, посылаемое ОС
-		WPARAM wParam, // параметры
-		LPARAM lParam) // сообщений, для последующего обращения
-	{
-		HDC hDC; // создаём дескриптор ориентации текста на экране
-		PAINTSTRUCT ps; // структура, сод-щая информацию о клиентской области (размеры, цвет и тп)
-		RECT rect; // стр-ра, определяющая размер клиентской области
-		COLORREF colorText = RGB(255, 0, 0); // задаём цвет текста
-		switch (uMsg) {
-		case WM_PAINT: // если нужно нарисовать, то:
-			hDC = BeginPaint(hWnd, &ps); // инициализируем контекст устройства
-			GetClientRect(hWnd, &rect); // получаем ширину и высоту области для рисования
-			SetTextColor(hDC, colorText); // устанавливаем цвет контекстного устройства
-			DrawText(hDC, _T("Hello World!"), -1, &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER); // рисуем текст
-			EndPaint(hWnd, &ps); // заканчиваем рисовать
-			break;
-		case WM_DESTROY: // если окошко закрылось, то:
-			PostQuitMessage(NULL); // отправляем WinMain() сообщение WM_QUIT
-			break;
-		default:
-			return DefWindowProc(hWnd, uMsg, wParam, lParam); // если закрыли окошко
-		}
-		return NULL; // возвращаем значение
-
-	}
-
-	Form::Form(TCHAR * strWindowClassName, HINSTANCE hInstance, int x, int y ,int width, int heigth, int iShowWindow)
+	Form::Form(TCHAR * strWindowClassName, HINSTANCE hInstance, int x, int y, int width, int heigth, int iShowWindow)
 	{
 		//заполнение структуры
 		_wndClass.cbSize = sizeof(_wndClass);
@@ -76,5 +48,47 @@ namespace mns
 
 	Form::~Form()
 	{
+	}
+
+	LRESULT Form::WndProc(HWND hWnd, // дескриптор окошка
+		UINT uMsg, // сообщение, посылаемое ОС
+		WPARAM wParam, // параметры
+		LPARAM lParam) // сообщений, для последующего обращения
+	{
+		try
+		{
+			switch (uMsg)
+			{
+				//инициализация динамических объектов
+			case WM_CREATE:
+
+
+
+				return 0;
+
+			case WM_COMMAND:
+
+
+				return 0;
+
+			case WM_DESTROY:
+
+				PostQuitMessage(NULL);
+
+				return 0;
+
+			default:
+				//передача не обработанных сообщений далее
+				return DefWindowProc(hWnd, uMsg, wParam, lParam);
+			}
+		}
+		catch (std::exception ex)
+		{
+
+			MessageBoxA(NULL, ex.what(), NULL, MB_ICONERROR);
+
+			PostQuitMessage(-1);
+			return -1;
+		}
 	}
 }
