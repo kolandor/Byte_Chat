@@ -1,0 +1,8 @@
+﻿  Form.cpp
+c:\users\helios\documents\gitprojects\bytechatwinapi\chatclientwinapi\form.cpp(73): warning C4302: 'reinterpret_cast': truncation from 'TCHAR *' to 'wchar_t'
+c:\users\helios\documents\gitprojects\bytechatwinapi\chatclientwinapi\form.cpp(73): warning C4244: 'argument': conversion from 'wchar_t' to 'char', possible loss of data
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Source.cpp
+  ChatClientWinAPI.vcxproj -> C:\Users\Helios\Documents\GitProjects\ByteChatWinAPI\Debug\ChatClientWinAPI.exe
+  ChatClientWinAPI.vcxproj -> C:\Users\Helios\Documents\GitProjects\ByteChatWinAPI\Debug\ChatClientWinAPI.pdb (Full PDB)

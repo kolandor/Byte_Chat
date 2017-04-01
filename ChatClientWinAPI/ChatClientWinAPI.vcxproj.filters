@@ -23,10 +23,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BaseWindow.h">
+    <ClInclude Include="Form.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Form.h">
+    <ClInclude Include="BaseControl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
