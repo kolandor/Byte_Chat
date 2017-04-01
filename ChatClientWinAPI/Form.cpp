@@ -1,5 +1,6 @@
 #include "Form.h"
-
+#include "Button.h"
+#include <tchar.h>
 
 namespace mns
 {
@@ -29,7 +30,7 @@ namespace mns
 			strWindowClassName, // имя окна (то что сверху)
 			DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU, // режимы отображения
 			x, y, width, heigth,
-			HWND(NULL), // дескриптор родительского окошка (у нас нет род. окон)
+			HWND(NULL), // дескриптор родительского окна (у нас нет род. окон)
 			NULL, // дескриптор меню (у нас его нет)
 			HINSTANCE(hInstance), // .... экземпляра приложения
 			NULL);
@@ -50,7 +51,7 @@ namespace mns
 	{
 	}
 
-	LRESULT Form::WndProc(HWND hWnd, // дескриптор окошка
+	LRESULT Form::WndProc(HWND hWnd, // дескриптор окна
 		UINT uMsg, // сообщение, посылаемое ОС
 		WPARAM wParam, // параметры
 		LPARAM lParam) // сообщений, для последующего обращения
@@ -61,11 +62,12 @@ namespace mns
 			{
 				//инициализация динамических объектов
 			case WM_CREATE:
+			{
 
-
+				Button test(hWnd, _T("Test"), 10, 10, 50, 50, 1, nullptr);
 
 				return 0;
-
+			}
 			case WM_COMMAND:
 
 
