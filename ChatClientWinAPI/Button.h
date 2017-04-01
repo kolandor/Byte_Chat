@@ -4,7 +4,7 @@
 
 namespace mns
 {
-	class Button : BaseControl
+	class Button : public BaseControl
 	{
 		//метод обработки события
 		bool(*Action)(const void*);

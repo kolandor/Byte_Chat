@@ -149,11 +149,13 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Form.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="TextBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseControl.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Form.h" />
+    <ClInclude Include="TextBox.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

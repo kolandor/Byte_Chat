@@ -1,6 +1,7 @@
 #include "Form.h"
 #include "Button.h"
 #include <tchar.h>
+#include "TextBox.h"
 
 namespace mns
 {
@@ -64,7 +65,9 @@ namespace mns
 			case WM_CREATE:
 			{
 
-				Button test(hWnd, _T("Test"), 10, 10, 50, 50, 1, nullptr);
+				TextBox text_box_chat(hWnd, _T("Chat Window"), 10, 15, 360, 350, 1, nullptr);
+				TextBox text_box_message(hWnd, _T("Message Window"), 10, 350 + 25, 300, 50, 2, nullptr);
+				Button send_button(hWnd, _T("SEND"), 310, 350 + 25, 60, 50, 2, nullptr);
 
 				return 0;
 			}

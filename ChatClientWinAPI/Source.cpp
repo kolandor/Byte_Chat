@@ -15,7 +15,7 @@ int WINAPI WinMain(
 
 		MSG msg;
 
-		mns::Form ChatWindow(_T("ByteChat"), hInstance, 0, 0, 400, 400, nCmdShow);
+		mns::Form ChatWindow(_T("ByteChat"), hInstance, 100, 100, 400, 500, nCmdShow);
 
 		BOOL bRet;
 
