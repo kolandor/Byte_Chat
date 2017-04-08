@@ -1,0 +1,13 @@
+﻿  Source.cpp
+x:\learn and code\projects usb (дз по charp дз по winapi и не много прочего)\чат\server\server\wraphandler.h(33): warning C4800: 'const HANDLE': forcing value to bool 'true' or 'false' (performance warning)
+x:\learn and code\projects usb (дз по charp дз по winapi и не много прочего)\чат\server\server\thread.h(27): warning C4800: 'HANDLE': forcing value to bool 'true' or 'false' (performance warning)
+x:\learn and code\projects usb (дз по charp дз по winapi и не много прочего)\чат\server\server\source.cpp(124): warning C4018: '<': signed/unsigned mismatch
+x:\learn and code\projects usb (дз по charp дз по winapi и не много прочего)\чат\server\server\source.cpp(129): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Compiling...
+  Thread.cpp
+x:\learn and code\projects usb (дз по charp дз по winapi и не много прочего)\чат\server\server\wraphandler.h(33): warning C4800: 'const HANDLE': forcing value to bool 'true' or 'false' (performance warning)
+x:\learn and code\projects usb (дз по charp дз по winapi и не много прочего)\чат\server\server\thread.h(27): warning C4800: 'HANDLE': forcing value to bool 'true' or 'false' (performance warning)
+  Generating Code...
+  Server.vcxproj -> X:\Learn And Code\Projects USB (ДЗ по CHarp ДЗ по WinApi и не много прочего)\Чат\Server\Debug\Server.exe
+  Server.vcxproj -> X:\Learn And Code\Projects USB (ДЗ по CHarp ДЗ по WinApi и не много прочего)\Чат\Server\Debug\Server.pdb (Full PDB)
