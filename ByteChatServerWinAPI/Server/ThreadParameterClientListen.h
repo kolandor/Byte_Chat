@@ -17,6 +17,10 @@ namespace mns
 		std::vector<client> &clients;
 		int &clientCount;
 		int index;
+
+		//цвет выводимых сообщений данного клиента
+		int currentColorIndex;
+
 	public:
 		ThreadParameterClientListen(int index,int &clientCount, CRITICAL_SECTION &cs, std::vector<client> &clients);
 		virtual ~ThreadParameterClientListen();

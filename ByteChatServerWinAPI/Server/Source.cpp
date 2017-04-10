@@ -2,13 +2,12 @@
 #include <Winsock.h>
 #include <iostream>
 #include "Client.h"
-#include <locale.h>
 #include "ThreadParameterClientListen.h"
 #include "Thread.h"
 #include "MyExce.h"
 #include <vector>
 #include <conio.h>
-#include "WrapHandler.h"
+#include "SetConsoleColor.h"
 
 #pragma comment(lib, "Ws2_32.lib")
 #include "ThreadParameterServerCommands.h"
@@ -17,11 +16,13 @@
 
 int main()
 {
-	//setlocale(LC_ALL, "");
 	try
 	{
-		mns::WrapHandler hColor = GetStdHandle(STD_OUTPUT_HANDLE);
-		SetConsoleTextAttribute(hColor, 0xA);
+		SetConsoleCollor(0xC);
+		std::cout << "\tByte Chat Server v0.2" << std::endl;
+
+		SetConsoleCollor(0xA);
+
 		//структура инициализации сокетов
 		WSADATA verSoc = { 0 };
 
@@ -35,7 +36,7 @@ int main()
 		//Серверный сокет
 		std::cout << "Creating the server socket" << std::endl;
 		SOCKET servSocket = socket(AF_INET, SOCK_STREAM, 0);
-		if(servSocket == INVALID_SOCKET)
+		if (servSocket == INVALID_SOCKET)
 		{
 			WSACleanup();
 			throw(mns::MyExce("Can't create the server socket",
@@ -54,7 +55,7 @@ int main()
 
 		//связка сокета со структурой адреса
 		std::cout << "Binding a socket with the sockaddr struct" << std::endl;
-		if(bind(servSocket,
+		if (bind(servSocket,
 			reinterpret_cast<sockaddr*>(&local_addr),
 			sizeof(local_addr)) == SOCKET_ERROR)
 		{
@@ -74,7 +75,7 @@ int main()
 
 		std::vector<client> clientSockets(clienCount);
 
-			//установка максимального колва подключений
+		//установка максимального колва подключений
 		std::cout << "Setting the max amount of clients" << std::endl;
 		if (listen(servSocket, clientSockets.size()) == SOCKET_ERROR)
 		{
@@ -92,6 +93,8 @@ int main()
 		//количество подключенних клиентов
 		int connectedClientsCount = 0;
 
+
+		SetConsoleCollor(0xB);
 		std::cout << "Server online, waiting for clients..." << std::endl;
 
 		mns::Thread(new mns::ThreadParameterServerCommands(critSec, clientSockets, servSocket)).Run();
@@ -151,6 +154,7 @@ int main()
 			}
 			catch (mns::MyExce &ex)
 			{
+				SetConsoleCollor(0xC);
 				std::cout << ex.what() << std::endl;
 			}
 		}
@@ -163,13 +167,16 @@ int main()
 	}
 	catch (std::exception &ex)
 	{
-		MessageBoxA(nullptr, ex.what(), NULL, MB_ICONERROR);
+		SetConsoleCollor(0xC);
+		std::cout << ex.what() << std::endl;
 	}
 	catch (...)
 	{
-		MessageBoxA(nullptr, "Undefined exception!", NULL, MB_ICONERROR);
+		SetConsoleCollor(0xC);
+		std::cout << "Undefined exception!" << std::endl;
 	}
 
+	SetConsoleCollor(0xA);
 	std::cout << "Press any key to exit..." << std::endl;
 
 	_getch();

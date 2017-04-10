@@ -56,5 +56,8 @@
     <ClInclude Include="ThreadParameterServerCommands.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SetConsoleColor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

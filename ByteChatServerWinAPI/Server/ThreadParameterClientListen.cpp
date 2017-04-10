@@ -1,5 +1,6 @@
 #include "ThreadParameterClientListen.h"
 #include <iostream>
+#include "SetConsoleColor.h"
 
 
 namespace mns
@@ -38,6 +39,14 @@ namespace mns
 						this->clients[this->index].login.resize(strlen(&messageBuffer[0]));
 						char connectMsg[] = "Connected: ";
 
+						//определение цвета которым будут выводится сообщения пользователя с учетом пропускания невидимых цветов
+						if (!((this->index + 1) % 17))
+							this->currentColorIndex = this->index + 2;
+						else
+							this->currentColorIndex = this->index + 1;
+
+						SetConsoleCollor(currentColorIndex);
+
 						//вывод серверу инфо о подключенном клиенте
 						std::cout << connectMsg << messageBuffer.c_str() << std::endl;
 						
@@ -50,6 +59,7 @@ namespace mns
 					{
 						EnterCriticalSection(&this->cs);
 
+						SetConsoleCollor(currentColorIndex);
 						std::cout << this->clients[this->index].login.c_str() << ": " << messageBuffer.c_str() << std::endl;
 						//массовая рассылка сообщения клиента
 						std::string longMessageCreator = this->clients[this->index].login + ": " + messageBuffer;
@@ -79,6 +89,7 @@ namespace mns
 
 		Brodcast("Disconnected: " + this->clients[this->index].login);
 
+		SetConsoleCollor(currentColorIndex);
 		std::cout << "Disconnected: " << this->clients[this->index].login.c_str() << std::endl;
 		//обнуление логина
 		this->clients[this->index].login.resize(0);

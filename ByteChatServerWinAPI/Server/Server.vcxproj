@@ -157,6 +157,7 @@
     <ClInclude Include="Convert.h" />
     <ClInclude Include="IThreadParameter.h" />
     <ClInclude Include="MyExce.h" />
+    <ClInclude Include="SetConsoleColor.h" />
     <ClInclude Include="Thread.h" />
     <ClInclude Include="ThreadParameterClientListen.h" />
     <ClInclude Include="ThreadParameterServerCommands.h" />

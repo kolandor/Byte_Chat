@@ -1,0 +1,21 @@
+﻿  ThreadParameterServerCommands.cpp
+c:\users\helios\documents\gitprojects\bytechatwinapi\bytechatserverwinapi\server\threadparameterservercommands.cpp(89): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  ThreadParameterClientListen.cpp
+c:\users\helios\documents\gitprojects\bytechatwinapi\bytechatserverwinapi\server\wraphandler.h(33): warning C4800: 'const HANDLE': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\helios\documents\gitprojects\bytechatwinapi\bytechatserverwinapi\server\threadparameterclientlisten.cpp(31): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\helios\documents\gitprojects\bytechatwinapi\bytechatserverwinapi\server\threadparameterclientlisten.cpp(117): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Thread.cpp
+c:\users\helios\documents\gitprojects\bytechatwinapi\bytechatserverwinapi\server\wraphandler.h(33): warning C4800: 'const HANDLE': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\helios\documents\gitprojects\bytechatwinapi\bytechatserverwinapi\server\thread.h(27): warning C4800: 'HANDLE': forcing value to bool 'true' or 'false' (performance warning)
+  Source.cpp
+c:\users\helios\documents\gitprojects\bytechatwinapi\bytechatserverwinapi\server\wraphandler.h(33): warning C4800: 'const HANDLE': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\helios\documents\gitprojects\bytechatwinapi\bytechatserverwinapi\server\thread.h(27): warning C4800: 'HANDLE': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\helios\documents\gitprojects\bytechatwinapi\bytechatserverwinapi\server\source.cpp(80): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Convert.cpp
+c:\users\helios\documents\gitprojects\bytechatwinapi\bytechatserverwinapi\server\convert.cpp(18): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\helios\documents\gitprojects\bytechatwinapi\bytechatserverwinapi\server\convert.cpp(26): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\helios\documents\gitprojects\bytechatwinapi\bytechatserverwinapi\server\convert.cpp(34): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\helios\documents\gitprojects\bytechatwinapi\bytechatserverwinapi\server\convert.cpp(42): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+  Server.vcxproj -> C:\Users\Helios\Documents\GitProjects\ByteChatWinAPI\ByteChatServerWinAPI\x64\Debug\Server.exe
+  Server.vcxproj -> C:\Users\Helios\Documents\GitProjects\ByteChatWinAPI\ByteChatServerWinAPI\x64\Debug\Server.pdb (Full PDB)
