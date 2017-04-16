@@ -3,7 +3,7 @@
 
 namespace mns
 {
-	Button::Button(const HWND & parent,TCHAR * strButtonName, const int &x, const int &y, const int &width, const int &height,const int &id, bool(*ActionFunc)(const  void*))
+	Button::Button(const HWND & parent,TCHAR * strButtonName, const int &x, const int &y, const int &width, const int &height,const int &id)
 	{
 		BaseControl::_hwndWindow = CreateWindow(
 			TEXT("Button"),   // указатель на зарегистрированное имя класса
@@ -28,8 +28,6 @@ namespace mns
 		BaseControl::_iID = id;
 
 		BaseControl::_strWindowName = reinterpret_cast<wchar_t>(strButtonName);
-
-		this->Action = ActionFunc;
 	}
 
 	Button::~Button()

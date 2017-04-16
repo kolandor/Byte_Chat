@@ -2,6 +2,7 @@
 #include "Button.h"
 #include <tchar.h>
 #include "TextBox.h"
+#include <memory>
 
 namespace mns
 {
@@ -52,6 +53,8 @@ namespace mns
 	{
 	}
 
+	std::vector<BaseControl*> controls;
+
 	LRESULT Form::WndProc(HWND hWnd, // дескриптор окна
 		UINT uMsg, // сообщение, посылаемое ОС
 		WPARAM wParam, // параметры
@@ -64,15 +67,25 @@ namespace mns
 				//инициализация динамических объектов
 			case WM_CREATE:
 			{
-
-				TextBox text_box_chat(hWnd, _T("Chat Window"), 10, 15, 360, 350, 1, nullptr);
-				TextBox text_box_message(hWnd, _T("Message Window"), 10, 350 + 25, 300, 50, 2, nullptr);
-				Button send_button(hWnd, _T("SEND"), 310, 350 + 25, 60, 50, 2, nullptr);
+				controls.push_back(new TextBox(hWnd, _T("192.168.123.123"), 10, 5, 115, 20, 1, WS_VISIBLE | WS_CHILD | WS_BORDER));
+				controls.push_back(new TextBox(hWnd, _T("port"), 130, 5, 40, 20, 2, WS_VISIBLE | WS_CHILD | WS_BORDER));
+				controls.push_back(new TextBox(hWnd, _T("UserName"), 175, 5, 90, 20, 3, WS_VISIBLE | WS_CHILD | WS_BORDER));
+				controls.push_back(new Button(hWnd, _T("CONNECT"), 270, 5, 95, 20, 4));
+				controls.push_back(new TextBox(hWnd, _T("Chat Window"), 10, 30, 360, 335, 5));
+				controls.push_back(new TextBox(hWnd, _T("Message Window"), 10, 350 + 25, 300, 50, 6));
+				controls.push_back(new Button(hWnd, _T("SEND"), 310, 350 + 25, 60, 50, 7));
 
 				return 0;
 			}
 			case WM_COMMAND:
 
+				for(int i = 0; i < controls.size(); i++)
+				{
+					if(controls[i]->GatID() == LOWORD(wParam))
+					{
+						controls[i]->EventStart(uMsg, wParam, lParam);
+					}
+				}
 
 				return 0;
 
@@ -95,5 +108,52 @@ namespace mns
 			PostQuitMessage(-1);
 			return -1;
 		}
+	}
+
+	const int SIZE_IP = 20;
+	const int SIZE_BUF = 1024;
+	const int LOGIN = 10;
+
+	//поток вывода сообщения
+	DWORD WINAPI ThreadMessage(LPVOID _param)
+	{
+		MessageBoxA(NULL, (char*)_param, "Anonym message", MB_OK);
+
+		return 0;
+	}
+
+	//поток чтения
+	DWORD WINAPI Thread(LPVOID _param)
+	{
+
+		SOCKET Socket = (SOCKET)_param;
+
+		char buf_recv[SIZE_BUF];
+		int size_recv;
+		char Message[SIZE_BUF] = { 0 };
+		do
+		{
+
+			memset(buf_recv, 0, sizeof(buf_recv));
+			size_recv = ::recv(Socket,
+				buf_recv,
+				sizeof(buf_recv) - 1,
+				0);
+
+			if (size_recv && size_recv != SOCKET_ERROR)
+			{
+				memset(Message, 0, sizeof(Message));
+
+				memcpy(Message, buf_recv, SIZE_BUF);
+				::CreateThread(NULL,
+					NULL,
+					ThreadMessage,
+					(LPVOID)&Message,
+					NULL,
+					NULL);
+			}
+		} while (size_recv && size_recv != SOCKET_ERROR);
+
+		return 0;
 	}
 }
